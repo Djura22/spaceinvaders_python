@@ -1,19 +1,24 @@
-import turtle
+import pygame
 import os
+import random
+import time
 
-wn = turtle.Screen()
-wn.bgcolor("black")
-wn.title("Space Invaders")
+WIDTH, HEIGHT = 750, 750
+WIN = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("Space Invader Clone")
 
-border_draw = turtle.Turtle()
-border_draw.speed(0)
-border_draw.color("blue")
-border_draw.penup()
-border_draw.setposition(-300, -300)
-border_draw.pendown()
-border_draw.pensize(3)
-for side in range(4):
-    border_draw.fd(600)
-    border_draw.lt(90)
-border_draw.hideturtle()
+# Loading assets
+
+RED_SHIP = pygame.image.load(os.path.join("assets", "pixel_ship_red_small.png"))
+GREEN_SHIP = pygame.image.load(os.path.join("assets", "pixel_ship_green_small.png"))
+BLUE_SHIP = pygame.image.load(os.path.join("assets", "pixel_ship_blue_small.png"))
+
+PLAYER_SHIP = pygame.image.load(os.path.join("assets", "pixel_ship_yellow.png"))
+
+RED_LASER = pygame.image.load(os.path.join("assets", "pixel_laser_red.png"))
+GREEN_LASER = pygame.image.load(os.path.join("assets", "pixel_laser_green.png"))
+YELLOW_LASER = pygame.image.load(os.path.join("assets", "pixel_laser_yellow.png"))
+BLUE_LASER = pygame.image.load(os.path.join("assets", "pixel_laser_blue.png"))
+
+BG = pygame.image.load(os.path.join("assets", "background-black.png"))
 
