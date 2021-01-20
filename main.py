@@ -4,7 +4,6 @@ import random
 import time
 pygame.font.init()
 
-
 WIDTH, HEIGHT = 750, 750
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Space Invader Clone")
@@ -43,8 +42,6 @@ class Ship:
     def get_height(self):
         return self.ship_img.get_height()
 
-
-
 class Player(Ship):
     def __init__(self, x, y, health=100):
         super().__init__(x, y, health)
@@ -52,6 +49,21 @@ class Player(Ship):
         self.laser_img = YELLOW_LASER
         self.mask = pygame.mask.from_surface(self.ship_img)
         self.max_health = health
+
+class Enemy(Ship):
+    COLOR_MAP = {
+        "red": (RED_SHIP, RED_LASER)
+        "green": (GREEN_SHIP, GREEN_LASER)
+        "blue": (BLUE_SHIP, BLUE_LASER)
+        }
+
+    def __init__(self, x, y, color, health=100): "red", "green", "blue"
+        super().__init__(x, y, health)
+        self.ship_img, self.laser_img = self.COLOR_MAP[color]
+        self.mask = pygame.mask.from_surface(self.ship_img)
+        
+    def move(self, vel):
+        self.y += vel
 
 def main():
     run = True
